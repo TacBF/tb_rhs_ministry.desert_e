@@ -1,0 +1,42 @@
+// gang
+
+uniforms[] =
+{
+// UNIFORMS
+	
+	// Infantry
+	
+	
+	{"U_C_Poor_1", {__ICE_gear_allRoles}},
+	{"U_C_HunterBody_grn", {__ICE_gear_allRoles}},
+	{"U_BG_Guerilla3_1", {__ICE_gear_allRoles}},
+	
+	{"U_BG_Guerrilla_6_1", {__ICE_gear_allRoles}},
+    {"rhsgref_uniform_tigerstripe", {__ICE_gear_allRoles}},
+	{"rhsgref_uniform_woodland_olive", {__ICE_gear_allRoles}},
+	{"rhsgref_uniform_para_ttsko_mountain", {__ICE_gear_allRoles}},
+	{"rhsgref_uniform_para_ttsko_urban", {__ICE_gear_allRoles}},
+
+
+
+// VESTS
+	
+	// Infantry
+	{"V_TacVest_oli", {__ICE_gear_allRoles}},
+	
+
+// HELMETS
+	
+	// Infantry
+	
+    {"H_Watchcap_khk", {__ICE_gear_allRoles}},
+	{"H_Shemag_olive_hs", {__ICE_gear_allRoles}},
+	{"H_ShemagOpen_tan", {__ICE_gear_allRoles}},
+    {"H_Watchcap_blk", {__ICE_gear_allRoles}},
+
+	
+// GLASSES
+	
+	{"rhs_balaclava", {__ICE_gear_allRoles}},
+	{"rhs_scarf", {__ICE_gear_allRoles}}
+};

@@ -1,0 +1,156 @@
+// security forces
+
+
+#include "\ice\ice_gear\kitDefines.sqh"
+
+private ["_result", "_role", "_side", "_faction",
+	"_weapons", "_attachments", "_magazines", "_commonOrdnance",
+	"_uniform", "_vest", "_backpack",
+	"_uniformItems", "_vestItems", "_backpackItems",
+	"_assignedItems", "_helmet", "_glasses", "_nvGoggles", "_binoculars", "_nvGogglesForAll"];
+
+_role = _this select 0;
+
+//====================================================//
+//				  Default Loadout                     // 
+//====================================================//
+
+
+	_weapons = ["rhsusf_weap_m9"];
+	_attachments = [[], [], []];
+	_magazines = [["rhsusf_mag_15Rnd_9x19_FMJ", 8]];
+	_commonOrdnance = [["rhs_mag_m67", 2],["SmokeShell", 2],["ICE_FieldDressing", 4],["ICE_Adrenaline", 2],["ICE_Morphine", 1]];
+	
+	// Containers
+	_uniform = ["U_BG_Guerilla2_2","U_BG_Guerilla2_3","U_BG_Guerilla2_1"] call BIS_fnc_selectRandom;
+	_vest = "V_TacVest_blk_POLICE";
+	_backpack = "B_AssaultPack_blk";	
+	_helmet = "H_Cap_police";
+	_glasses = ["","rhs_googles_black","rhs_googles_orange","rhs_googles_yellow","rhs_googles_clear"] call BIS_fnc_selectRandom;
+	_assignedItems = ["ItemMap", "ItemRadio", "ItemCompass", "ItemWatch"];
+	_nvGoggles = "";
+	_binoculars = "Binocular";
+	
+	// optional alternate method, which allows you to list items specifically for this container type. Otherwise use "_magazines" and/or "_commonOrdnance" instead. If using both, ensure you do not double up items.
+	_uniformItems = [];
+	_vestItems = [];
+	_backpackItems = [];
+
+//====================================================//
+//					Kit Overrides                     // 
+//====================================================//
+
+switch (_role) do
+{
+	case __ICE_gear_Rifleman:
+	{
+	    _weapons = ["rhs_weap_hk416d145"];
+		_attachments = [["CUP_optic_CompM4","rhsusf_acc_SF3P556"], [], []];
+		_magazines = [["rhs_mag_30Rnd_556x45_Mk318_Stanag", 8]];
+		_uniform = "rhs_uniform_g3_blk";
+		_helmet =  "rhsusf_opscore_bk_pelt";
+		_glasses="G_Combat";
+		_backpack="";
+	};
+	
+	case __ICE_gear_Grenadier:{};
+	
+	case __ICE_gear_MG:
+	{
+		_weapons = ["rhs_weap_m249_pip_S"];
+		_magazines = [["rhs_200rnd_556x45_M_SAW", 3]];
+		_uniform = "rhs_uniform_g3_blk";
+		_helmet =  "rhsusf_opscore_bk_pelt";
+		_glasses="G_Combat";
+		
+	};
+	
+	case __ICE_gear_Medic:
+	{   _weapons = ["rhsusf_weap_MP7A1_base_f","rhsusf_weap_m9"];
+		_magazines = [["rhsusf_mag_40Rnd_46x30_FMJ", 7], ["rhsusf_mag_15Rnd_9x19_FMJ", 3]];
+		_attachments = [["CUP_optic_CompM4"], [], []];
+		_commonOrdnance = [["rhs_mag_m67", 2], ["SmokeShell", 8], ["ICE_FieldDressing", 20], ["ICE_Adrenaline", 20], ["ICE_Morphine", 10]];	
+	};
+	
+	case __ICE_gear_CombatEngineer:
+	{   _weapons = ["rhsusf_weap_MP7A1_base_f","rhsusf_weap_m9"];
+		_magazines = [["rhsusf_mag_40Rnd_46x30_FMJ", 7], ["rhsusf_mag_15Rnd_9x19_FMJ", 3]];
+		_attachments = [["CUP_optic_CompM4"], [], []];
+		_backpackItems = [["DemoCharge_Remote_Mag", 4]];
+	};
+	
+	case __ICE_gear_LightAT:{	};
+	
+	case __ICE_gear_HeavyAT:{};
+	
+	case __ICE_gear_AA:{};
+	
+	case __ICE_gear_Marksman:
+	{
+		_weapons = ["rhs_weap_m16a4_carryhandle","rhsusf_weap_m9"];
+		_attachments = [["optic_Hamr"], [], []];
+		_magazines = [["rhs_mag_30Rnd_556x45_M855A1_Stanag", 8], ["rhsusf_mag_15Rnd_9x19_FMJ", 3]];
+		_binoculars = "lerca_1200_tan";
+	};
+	
+	case __ICE_gear_Sniper:
+	{
+		_weapons = ["rhs_weap_m14ebrri","rhsusf_weap_m9"];
+		_attachments = [["optic_LRPS"], [], []];
+		_magazines = [["rhsusf_20Rnd_762x51_m118_special_Mag", 8], ["rhsusf_mag_15Rnd_9x19_FMJ", 3]];
+		_assignedItems pushback "ItemGPS";
+		_commonOrdnance append [["SmokeShellGreen", 2], ["LaserBatteries",2]];
+		_binoculars = "TB_laserDesignatorNVG";
+		_helmet =  "rhsusf_bowman_cap";
+	};
+	
+	case __ICE_gear_SL:
+	{
+		_weapons = ["rhs_weap_hk416d145","rhsusf_weap_m9"];
+		_attachments = [["CUP_optic_CompM4","rhsusf_acc_SF3P556"], [], []];
+		_magazines = [["rhs_mag_30Rnd_556x45_Mk318_Stanag", 8], ["rhsusf_mag_15Rnd_9x19_FMJ", 3]];
+		_assignedItems pushback "ItemGPS";
+		_commonOrdnance append [["SmokeShellGreen", 2], ["LaserBatteries",2]];
+		_binoculars = "TB_laserDesignatorNVG";
+		
+	};
+	
+	case __ICE_gear_Crewman:{};
+	
+	case __ICE_gear_Pilot:	{};
+	
+	case __ICE_gear_Diver:
+	{
+		_weapons = ["rhs_weap_m16a4_carryhandle"];
+		_attachments = [["CUP_optic_CompM4","rhsusf_acc_SF3P556"], [], []];
+		_magazines = [["rhs_mag_30Rnd_556x45_M855A1_Stanag", 8]];
+		_uniform = "rhs_uniform_g3_blk";
+		_helmet =  "rhsusf_opscore_bk_pelt";
+		_assignedItems pushback "ItemGPS";
+		_glasses="G_Combat";
+	};
+};
+
+//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+_result =
+[
+	_weapons,
+	_attachments, // nested array
+	_magazines, // nested array - in A3, all magazines should be in each container's items list.
+	_commonOrdnance, // combined nested/single array - in A3, all magazines should be in each container's items list.
+
+	_uniform,
+	_vest,
+	_backpack,
+
+	_uniformItems,
+	_vestItems,
+	_backpackItems,
+
+	_assignedItems,
+	_helmet,
+	_glasses
+];
+//-----------------------------------------------------------------------------
+_result
